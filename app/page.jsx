@@ -232,7 +232,7 @@ export default function Home() {
       </section>
       <footer className="site-footer">
         <div>
-          <span className="footer-mark">OFF/GRID</span>
+          <span className="footer-mark">OFFGRID</span>
           <p>Digital goods for people who ship.</p>
         </div>
         <div>

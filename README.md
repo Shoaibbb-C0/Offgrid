@@ -1,4 +1,4 @@
-# OFF/GRID
+# OFFGRID
 
 A premium, mobile-first digital goods storefront for UI systems, code kits, icon libraries, and launch assets. Offgrid combines an editorial shopping experience with a server-authoritative Stripe and Supabase commerce backend.
 

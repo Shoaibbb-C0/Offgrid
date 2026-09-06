@@ -17,6 +17,6 @@ Font license texts are stored beside the font files. Both families are self-host
 
 ## Brand assets
 
-The OFF/GRID wordmark is an original typographic logo rendered in Syne. Palette: ink `#11120F` (60%), paper/white `#F4F3ED` / `#FFFFFF` (30%), acid lime `#C8FF30` (10%). Supporting campaign colors are violet `#7963EF`, blue `#81CAFF`, and coral `#FF8B6A`.
+The OFFGRID wordmark is an original typographic logo rendered in Syne. Palette: ink `#11120F` (60%), paper/white `#F4F3ED` / `#FFFFFF` (30%), acid lime `#C8FF30` (10%). Supporting campaign colors are violet `#7963EF`, blue `#81CAFF`, and coral `#FF8B6A`.
 
 Only assets referenced by the production storefront are retained here.
