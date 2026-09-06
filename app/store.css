@@ -20,7 +20,7 @@
 .mobile-menu {
   position: absolute;
   z-index: 40;
-  top: 100px;
+  top: 66px;
   left: 0;
   right: 0;
   background: var(--paper);

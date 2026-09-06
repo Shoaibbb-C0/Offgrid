@@ -9,9 +9,6 @@ export default function Navbar({ onSearch }) {
   const count = cart.reduce((s, x) => s + x.qty, 0);
   return (
     <>
-      <div className="announcement">
-        INSTANT DELIVERY · SECURE CHECKOUT · 7-DAY RETURNS
-      </div>
       <nav className="nav-shell">
         <button
           className="icon-button mobile-only"
