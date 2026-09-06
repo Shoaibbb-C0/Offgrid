@@ -18,12 +18,18 @@ A premium, mobile-first digital goods storefront for UI systems, code kits, icon
 
 ## Stack
 
-- Vinext, React, JavaScript, and Tailwind CSS
-- Express API
-- Supabase PostgreSQL
-- Stripe Checkout and webhooks
-- Oxlint and Oxfmt
-- Node test runner
+- **React 19** — interactive storefront components and state
+- **Vinext + Vite** — Next.js-style routing, development, and production builds
+- **JavaScript + JSX** — frontend and backend application code
+- **Tailwind CSS engine + custom CSS** — responsive design, typography, and motion
+- **Express** — private commerce API
+- **Supabase PostgreSQL** — products, orders, reservations, inventory, and payment events
+- **Stripe Checkout** — hosted test payments and signed webhooks
+- **Zod** — API request validation
+- **Helmet, CORS, and rate limiting** — HTTP security controls
+- **Lucide** — lightweight interface icons
+- **Oxlint + Oxfmt** — static analysis and consistent formatting
+- **Node test runner** — commerce and webhook security tests
 
 ## Project structure
 
