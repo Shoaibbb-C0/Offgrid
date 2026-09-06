@@ -1,12 +1,19 @@
 import { requireStripe } from '../lib/stripe.js';
-export async function createStripeCheckout({ order, email, currency, items }) {
+export async function createStripeCheckout({
+  order,
+  email,
+  currency,
+  items,
+  appUrl,
+}) {
   const stripe = requireStripe();
-  const appUrl = process.env.PUBLIC_APP_URL || 'http://localhost:3000';
+  const metadata = { order_id: order.order_id, public_id: order.public_id };
   return stripe.checkout.sessions.create({
     mode: 'payment',
     customer_email: email,
     client_reference_id: order.order_id,
-    metadata: { order_id: order.order_id, public_id: order.public_id },
+    metadata,
+    payment_intent_data: { metadata },
     line_items: items.map((item) => ({
       quantity: item.quantity,
       price_data: {

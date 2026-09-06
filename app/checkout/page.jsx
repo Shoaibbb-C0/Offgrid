@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Lock } from 'lucide-react';
 import { money, useStore } from '../../frontend/context/StoreContext';
-const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 export default function Checkout() {
   const { detailed, total, currency } = useStore();
   const [busy, setBusy] = useState(false);
@@ -13,7 +12,7 @@ export default function Checkout() {
     setError('');
     const form = new FormData(event.currentTarget);
     try {
-      const response = await fetch(`${api}/api/checkout`, {
+      const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({

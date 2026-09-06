@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { ArrowRight, PackageSearch } from 'lucide-react';
-const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 export default function Lookup() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
@@ -10,7 +9,7 @@ export default function Lookup() {
     setError('');
     const form = new FormData(event.currentTarget);
     try {
-      const response = await fetch(`${api}/api/orders/lookup`, {
+      const response = await fetch('/api/orders/lookup', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({

@@ -22,11 +22,11 @@ A premium, mobile-first digital goods storefront for UI systems, code kits, icon
 - **Next.js** — App Router, server rendering, development, and Vercel-ready production builds
 - **JavaScript + JSX** — frontend and backend application code
 - **Tailwind CSS engine + custom CSS** — responsive design, typography, and motion
-- **Express** — private commerce API
+- **Next.js Route Handlers** — same-domain, server-only commerce API
 - **Supabase PostgreSQL** — products, orders, reservations, inventory, and payment events
 - **Stripe Checkout** — hosted test payments and signed webhooks
 - **Zod** — API request validation
-- **Helmet, CORS, and rate limiting** — HTTP security controls
+- **Next.js security headers + Vercel Firewall** — same-origin HTTP protection
 - **Lucide** — lightweight interface icons
 - **Oxlint + Oxfmt** — static analysis and consistent formatting
 - **Node test runner** — commerce and webhook security tests
@@ -38,9 +38,9 @@ app/                    Storefront routes and global styles
 frontend/components/    Reusable commerce and navigation components
 frontend/context/       Cart, currency, and wishlist state
 frontend/data/          Demo product catalogue
-backend/lib/            Stripe and Supabase server clients
+app/api/                Vercel-ready checkout, orders, health, and webhook routes
+backend/lib/            Stripe, Supabase, and HTTP server utilities
 backend/modules/        Pricing, checkout, order, and payment logic
-backend/routes/         Express API endpoints
 backend/tests/          Security and commerce tests
 database/schema.sql     PostgreSQL schema and atomic commerce functions
 database/seed.sql       Products and license variants
@@ -68,11 +68,7 @@ npm install
 Copy `.env.example` to `.env` and provide the account-owned values:
 
 ```env
-PORT=4000
-FRONTEND_ORIGIN=http://localhost:3000
 PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:4000
-
 SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 SUPABASE_SECRET_KEY=sb_secret_YOUR_KEY
 
@@ -93,28 +89,22 @@ The schema creates catalogue, order, reservation, payment-event, and inventory-m
 
 ## Run locally
 
-Start the storefront:
+Start the complete storefront and API:
 
 ```bash
 npm run dev
 ```
 
-Start the API in another terminal:
-
-```bash
-npm run dev:api
-```
-
-Forward Stripe test events in a third terminal:
+Forward Stripe test events in another terminal:
 
 ```bash
 stripe login
-stripe listen --forward-to localhost:4000/api/webhooks/stripe
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-Copy the emitted `whsec_...` value into `.env`, then restart the API.
+Copy the emitted `whsec_...` value into `.env`, then restart Next.js.
 
-Open `http://localhost:3000`. The API health endpoint is available at `http://localhost:4000/api/health`.
+Open `http://localhost:3000`. The same-domain API health endpoint is available at `http://localhost:3000/api/health`.
 
 Stripe's successful test card is `4242 4242 4242 4242` with any future expiry and any CVC. No real payment is collected in test mode.
 
@@ -122,9 +112,9 @@ Stripe's successful test card is `4242 4242 4242 4242` with any future expiry an
 
 ```text
 Cart
-  → Express validates product, license, quantity, price, and currency
+  → Next.js validates product, license, quantity, price, and currency
   → Supabase creates a pending order and 15-minute reservation
-  → Express creates a Stripe-hosted Checkout Session
+  → Next.js creates a Stripe-hosted Checkout Session
   → Stripe sends a signed payment event
   → PostgreSQL records the unique event
   → Order is fulfilled and inventory changes exactly once
@@ -136,7 +126,6 @@ The success-page redirect never marks an order paid. Only a verified webhook can
 
 ```bash
 npm run dev       # Storefront development server
-npm run dev:api   # Express commerce API
 npm run build     # Production build
 npm run lint      # Static analysis
 npm run format    # Format source files

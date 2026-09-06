@@ -14,7 +14,7 @@ The code is complete; only account-owned values and one SQL execution remain.
    SUPABASE_SECRET_KEY=sb_secret_YOUR_KEY
    ```
 
-5. Never prefix the secret with `NEXT_PUBLIC_`, and never paste it into browser code. The storefront only reaches Supabase through the Express API.
+5. Never prefix the secret with `NEXT_PUBLIC_`, and never paste it into browser code. The storefront only reaches Supabase through server-only Next.js Route Handlers.
 
 ## 2. Stripe test mode
 
@@ -29,15 +29,14 @@ The code is complete; only account-owned values and one SQL execution remain.
 
    ```bash
    stripe login
-   stripe listen --forward-to localhost:4000/api/webhooks/stripe
+   stripe listen --forward-to localhost:3000/api/webhooks/stripe
    ```
 
 4. The CLI prints a signing secret beginning with `whsec_`. Add it to `.env` as `STRIPE_WEBHOOK_SECRET`. Keep the listener running while testing.
-5. Start the storefront and API in separate terminals:
+5. Start the complete application:
 
    ```bash
    npm run dev
-   npm run dev:api
    ```
 
 6. Add an item, continue to Stripe, and use Stripe's successful test card `4242 4242 4242 4242`, any future expiry, and any CVC/postcode. For a decline test, use `4000 0000 0000 9995`.
@@ -46,7 +45,7 @@ For a deployed API, create a Stripe webhook endpoint ending in `/api/webhooks/st
 
 ## Verification
 
-- `GET http://localhost:4000/api/health` must show both integrations as configured.
+- `GET http://localhost:3000/api/health` must show both integrations as configured.
 - A successful checkout creates one `orders` row, snapshots its `order_items`, consumes reservations, and writes one negative `inventory_movements` row per item.
 - Re-sending the same Stripe event returns `duplicate: true` and does not decrement inventory again.
 - The success-page redirect is informational only; fulfillment is performed exclusively by the signed webhook transaction.

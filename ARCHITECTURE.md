@@ -22,7 +22,8 @@
 - `frontend/components/`: reusable navigation, product card, search, cart, and shell primitives.
 - `frontend/context/`: device-local demo cart/currency/wishlist state.
 - `frontend/data/`: 16-product demo catalogue.
-- `backend/`: Express API, validation, catalogue, checkout, orders, inventory, payment event, and auth modules.
+- `app/api/`: same-domain Next.js Route Handlers deployed with the storefront as Vercel Functions.
+- `backend/`: server-only validation, catalogue, checkout, orders, inventory, and payment modules shared by the route handlers.
 - `database/schema.sql`: Supabase PostgreSQL schema, constraints, row-level-security notes, and atomic inventory functions.
 - `assets/`: source/license registry for all downloaded or external creative references. Runtime copies live in `public/assets/`.
 
@@ -30,7 +31,7 @@
 
 - Browser line items are treated only as product/variant/quantity references; totals are recalculated from database prices.
 - Stripe webhook signatures are verified against the raw request body; success-page navigation never marks an order paid.
-- Helmet security headers, explicit CORS origins, JSON size limits, rate limiting, schema validation, secure cookies, admin role checks, and allowlisted upload MIME/size limits are expected in production.
+- Next.js security headers, same-origin API calls, Vercel Firewall, schema validation, server-only secrets, secure cookies, admin role checks, and allowlisted upload MIME/size limits are expected in production.
 - Semantic headings, labelled controls, keyboard focus, reduced-motion fallbacks, structured product metadata, responsive images, lazy loading, and route metadata cover accessibility/SEO/performance.
 - Tests cover last-license concurrency, repeated/out-of-order webhooks, cart repricing, invalid variants, failed/abandoned checkout, order lookup privacy, and admin authorization.
 
