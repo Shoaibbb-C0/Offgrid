@@ -14,6 +14,7 @@ A premium, mobile-first digital goods storefront for UI systems, code kits, icon
 - Guest checkout with optional account and admin interface demonstrations
 - Secure order lookup, confirmation, delivery, return, and licensing pages
 - Reduced-motion support and touch-first mobile interactions
+- Self-hosted Space Grotesk and Syne fonts with no runtime Google Fonts dependency
 
 ## Stack
 

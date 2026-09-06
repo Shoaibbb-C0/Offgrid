@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import { StoreProvider } from "../context/StoreContext";
-import Navbar from "./Navbar";
-import CartDrawer from "./CartDrawer";
-import SearchOverlay from "./SearchOverlay";
+'use client';
+import { useState } from 'react';
+import { StoreProvider } from '../context/StoreContext';
+import Navbar from './Navbar';
+import CartDrawer from './CartDrawer';
+import SearchOverlay from './SearchOverlay';
 export default function AppShell({ children }) {
   const [search, setSearch] = useState(false);
   return (

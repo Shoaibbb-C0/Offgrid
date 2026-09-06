@@ -1,6 +1,6 @@
-"use client";
-import { ArrowRight, Minus, Plus, Trash2, X } from "lucide-react";
-import { money, useStore } from "../context/StoreContext";
+'use client';
+import { ArrowRight, Minus, Plus, Trash2, X } from 'lucide-react';
+import { money, useStore } from '../context/StoreContext';
 export default function CartDrawer() {
   const { cartOpen, setCartOpen, detailed, total, currency, remove, update } =
     useStore();
@@ -14,7 +14,7 @@ export default function CartDrawer() {
         />
       )}
       <aside
-        className={`cart-drawer ${cartOpen ? "open" : ""}`}
+        className={`cart-drawer ${cartOpen ? 'open' : ''}`}
         aria-hidden={!cartOpen}
         aria-label="Shopping cart"
       >
@@ -23,8 +23,8 @@ export default function CartDrawer() {
             <span>YOUR CART</span>
             <h2>
               {detailed.length
-                ? `${detailed.length} good choice${detailed.length > 1 ? "s" : ""}`
-                : "Still considering?"}
+                ? `${detailed.length} good choice${detailed.length > 1 ? 's' : ''}`
+                : 'Still considering?'}
             </h2>
           </div>
           <button onClick={() => setCartOpen(false)} aria-label="Close">
