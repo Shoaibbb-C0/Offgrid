@@ -18,7 +18,7 @@
 
 ## Application boundaries
 
-- `app/`: Vinext/React route entrypoints.
+- `app/`: Next.js App Router pages and layouts.
 - `frontend/components/`: reusable navigation, product card, search, cart, and shell primitives.
 - `frontend/context/`: device-local demo cart/currency/wishlist state.
 - `frontend/data/`: 16-product demo catalogue.

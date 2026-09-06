@@ -19,7 +19,7 @@ A premium, mobile-first digital goods storefront for UI systems, code kits, icon
 ## Stack
 
 - **React 19** — interactive storefront components and state
-- **Vinext + Vite** — Next.js-style routing, development, and production builds
+- **Next.js** — App Router, server rendering, development, and Vercel-ready production builds
 - **JavaScript + JSX** — frontend and backend application code
 - **Tailwind CSS engine + custom CSS** — responsive design, typography, and motion
 - **Express** — private commerce API
@@ -48,7 +48,7 @@ assets/                 Original asset archive and license register
 public/assets/          Browser-served creative assets
 ```
 
-Generated directories such as `.next`, `.vinext`, `.wrangler`, and `dist` are intentionally ignored.
+Generated directories such as `.next` and `dist` are intentionally ignored.
 
 ## Local setup
 
